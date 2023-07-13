@@ -319,3 +319,156 @@ friends.splice(3, 0, "Robert", "Emily")
 // 3 o más. (opcionales) los elementos que quiero agregar al array
 
 console.log("despues de splice", friends)
+
+
+// loops en arrays
+
+let numbers = [10, 55, 20, "hola", 32, true, null, 1];
+
+let impostors = [];
+let onlyNumbers = [];
+
+// FOR loop
+for (let i = 0; i < numbers.length; i++) {
+  console.log( numbers[i] )
+  if ( typeof numbers[i] === "number" ) {
+    
+    onlyNumbers.push(numbers[i])
+  } else {
+    impostors.push(numbers[i])
+  }
+}
+
+// FOR OF loop
+// for (let eachElement of numbers) {
+//   console.log( eachElement )
+//   if ( typeof eachElement === "number" ) {
+    
+//     onlyNumbers.push(eachElement)
+//   } else {
+//     impostors.push(eachElement)
+//   }
+// }
+
+console.log("impostors", impostors) // sus
+
+console.log("onlyNumbers", onlyNumbers)
+
+
+
+
+// let bool = true
+// let num = 500
+
+// console.log(typeof (typeof num))
+
+
+// REFERENCIAS EN JS
+
+
+let age1 = 35;
+let age2 = 35;
+
+console.log( age1 === age2 )
+// JS compara data primitiva por su valor
+
+
+let agesArr = [ 18, 25, 46 ]; // ref. 1234
+let agesArr2 = [ 18, 25, 46 ]; // ref. 5556
+
+console.log(agesArr)
+
+console.log( agesArr === agesArr2 ) // false
+//          ref 1234 === ref 5556   // false
+// JS compara data no primitiva (arrays, objetos, funciones, ...) por su referencia
+
+
+console.log( agesArr[0] === agesArr2[0] )
+
+
+let agesArr3 = agesArr; // asigna la referencia del original
+
+console.log("agesArr", agesArr) // ref 1234
+console.log("agesArr3", agesArr3) // ref 1234
+
+agesArr3.pop() // ref 1234
+
+console.log("agesArr3", agesArr3)
+console.log("agesArr original", agesArr)
+
+console.log(agesArr === agesArr3)
+
+// hay multiples formas clonar un array
+// let agesArr4 = agesArr2.slice(0)
+let agesArr4 = JSON.parse( JSON.stringify( agesArr2 ) ) // ref 9876
+
+agesArr4.pop()
+console.log("agesArr4 copia", agesArr4)
+console.log("agesArr2 original", agesArr2)
+
+
+let newArr = [ 40, 50, "hola" ]
+
+console.log( JSON.stringify(newArr) )
+console.log( JSON.parse( '["hola", 100, true]' ) )
+
+
+
+
+// Ejercicio
+
+
+let names = [ "Anna", "Uriel", "Dani", "Angel", "Alejandro", "Mercedes", "Manu" ]
+
+
+// crear una funcion 2 argumentos
+// - 1. lista de nombres
+// - 2. Una letra
+
+// devolver solo los nombres que empiecen por esa letra
+
+function onlyNamesThatStartWith(namesArr, letter) {
+
+  // let namesArr = [....]
+  // let letter = "A" o "M" o cualquier letra
+
+  // Clausulas de guardia => analizar la data antes de hacer las ejecuciones
+  if (namesArr.length === 0) {
+    return "Hey, el array está vacio :("
+    // a. retornar el valor
+    // b. detener la ejecucion de la funcion
+  }
+
+  // RECORDAMOS USAR LOS PARAMETROS DE LA FUNCION
+
+  // crear el array vacio que tendra los elementos a retornar
+  let nuevoArr = [];
+
+  // 1. for para iterar sobre el array
+  for (let i = 0; i < namesArr.length; i++) {
+    // console.log( namesArr[i] ) // cada elemensto
+    // 2. buscando la primera letra de cada nombre
+    // console.log( namesArr[i][0] )
+    let nombre = namesArr[i]
+    // 3. if para evaluar si la primera letra es la correcta
+    if (nombre[0] === letter) {
+      // console.log(nombre)
+      nuevoArr.push(nombre)
+      // return nombre;
+      // a. devuelve este de la funcion
+      // b. deten la ejecucion de la funcion
+    }
+    
+  } 
+  
+  return nuevoArr
+  
+}
+
+console.log( onlyNamesThatStartWith(names, "A") ) // [ "Anna", "Angel", "Alejandro" ]
+
+console.log( onlyNamesThatStartWith(names, "M") ) // [ "Manu", "Mercedes" ]
+
+console.log( onlyNamesThatStartWith(names, "X") ) // [ ]
+
+console.log( onlyNamesThatStartWith([], "X") )
