@@ -182,3 +182,77 @@ const arrowFunction = () => {
 functionDeclaration();
 funcionExpression();
 arrowFunction();
+
+
+// ARRAYS
+
+// syntax
+
+// [ varios elementos listados, separador por comas ]
+
+let unArray = [ "hola", 50, true, undefined, null, NaN, [ "adios" ], { name: "pedro" }, () => {/* ... */} ]
+
+
+let cities = [ "Madrid", "Sevilla", "Zaragoza", "Berlin", "Tokyo", "Cadiz" ]
+
+
+console.log(cities.length) // 6;
+
+
+// buscar el primer elemento del array
+console.log( cities[0] )
+
+// primer caracter del primer elemento del array
+console.log( cities[0][0] )
+
+// el ultimo elemento del array
+console.log( cities[cities.length - 1] )
+
+// la primera letra de la ultima ciudad
+console.log( cities[cities.length - 1][0] )
+
+
+// la ultima letra de la ultima ciudad
+// console.log( cities[cities.length - 1][cities[cities.length - 1].length - 1] )
+
+let lastCity = cities[cities.length - 1]
+console.log(lastCity)
+
+let lastCharLastCity = lastCity[lastCity.length - 1]
+console.log(lastCharLastCity)
+
+
+// metodos de arrays
+
+// indexOf => la posición de un elemento
+
+console.log( cities.indexOf("Sevilla") ) // 1
+
+console.log( cities.indexOf("Barcelona") ) // -1 => no existe
+
+// includes => si existe o no existe
+
+console.log( cities.includes("Tokyo") ) // true
+
+console.log( cities.includes("Paris") ) // false
+
+
+// slice() => retorna un array con una copia de los elementos
+
+console.log( cities.slice( 2, 4 ) )
+
+console.log( cities.slice( 3 ) )
+
+console.log( cities.slice( -2) )
+
+// array con la primera y la ultima ciudad
+let nuevoArr = [ cities[0], cities[cities.length - 1] ]
+console.log(nuevoArr)
+
+let nuevoArr2 = [ cities[0], cities.slice(-1)[0] ]
+console.log(nuevoArr2)
+
+
+console.log(cities)
+
+
