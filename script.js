@@ -1,6 +1,6 @@
 console.log("probando")
 
-// for of loops => se usa para strings y arrays
+// FOR OF loops => se usa para strings y arrays
 
 let string = "patata";
 
@@ -256,3 +256,66 @@ console.log(nuevoArr2)
 console.log(cities)
 
 
+// Mutabilidad en JS
+
+let str = "hola";
+
+
+console.log(str[0])
+
+str[0] = "H";
+
+console.log(str)
+// los strings y otros tipo de data primitivos son INMUTABLES
+
+str = str[0].toUpperCase() + str.slice(1)
+
+console.log(str)
+
+
+
+let friends = [ "Ross", "Monica", "Chandler", "Joey", "Phoebe", "Rachel" ]
+
+friends[0] = "Mike";
+
+console.log(friends)
+// arrays, objetos y cualquier elemento complejo se considera MUTABLE
+// no todos los metodos mutan el array original
+
+let sliced = friends.slice(2, 3); // crean una copia
+console.log(sliced)
+
+console.log(friends)
+
+
+
+// metodos que si mutan el array
+
+// borrar
+
+let elementoBorrado = friends.pop(); // eliminar el ultimo elemento
+
+console.log("elemento borrado", elementoBorrado)
+console.log("despues de pop", friends)
+
+friends.shift(); // elimina el primer elemento
+console.log("despues de shift", friends)
+
+
+// añadir
+
+friends.push("Janice")
+console.log("despues de push", friends)
+
+friends.unshift("Gunther")
+console.log("despues de unshift", friends)
+
+// añadir o borrar elementos internos => .splice()
+
+
+friends.splice(3, 0, "Robert", "Emily")
+// 1. (obligatorio)posicion donde hará el cambio
+// 2. (obligatorio o 0) cantidad de elementos a borrar
+// 3 o más. (opcionales) los elementos que quiero agregar al array
+
+console.log("despues de splice", friends)
